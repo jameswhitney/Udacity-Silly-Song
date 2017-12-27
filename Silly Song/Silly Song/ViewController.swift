@@ -31,10 +31,19 @@ class ViewController: UIViewController {
     
     @IBAction func displayLyrics(_ sender: Any) {
         guard let getName = nameField.text, !getName.isEmpty else {
+            emptyStringAlert(messageToUser: "Please enter a name")
             return
         }
         lyricsView.text = lyricsForName(lyricsTemplate: bananaFanaTemplate, fullName: getName)
     }
+    func emptyStringAlert(messageToUser: String) {
+        
+        let alertToUser = UIAlertController(title: "Name Required", message: messageToUser, preferredStyle: UIAlertControllerStyle.alert)
+        let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertToUser.addAction(ok)
+        self.present(alertToUser, animated: true, completion: nil)
+    }
+
 }
 
 extension ViewController: UITextFieldDelegate {
