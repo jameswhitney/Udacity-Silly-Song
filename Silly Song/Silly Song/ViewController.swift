@@ -30,8 +30,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func displayLyrics(_ sender: Any) {
-        let getName = nameField.text
-        lyricsView.text = lyricsForName(lyricsTemplate: bananaFanaTemplate, fullName: getName!)
+        guard let getName = nameField.text, !getName.isEmpty else {
+            return
+        }
+        lyricsView.text = lyricsForName(lyricsTemplate: bananaFanaTemplate, fullName: getName)
     }
 }
 
